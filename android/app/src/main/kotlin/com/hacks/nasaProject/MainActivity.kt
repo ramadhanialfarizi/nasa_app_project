@@ -1,4 +1,4 @@
-package com.example.nasa_project
+package com.hacks.nasaProject
 
 import io.flutter.embedding.android.FlutterActivity
 
