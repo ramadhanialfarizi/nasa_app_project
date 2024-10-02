@@ -2,14 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nasa_project/app/core/utils/log_utility.dart';
 
-class GmailAuthService {
-  static GmailAuthService? _instance;
+class AuthService {
+  static AuthService? _instance;
 
-  GmailAuthService._internal() {
+  AuthService._internal() {
     _instance = this;
   }
 
-  factory GmailAuthService() => _instance ?? GmailAuthService._internal();
+  factory AuthService() => _instance ?? AuthService._internal();
 
   Future<UserCredential> signInWithGoogle() async {
     try {
@@ -33,5 +33,9 @@ class GmailAuthService {
       LogUtility.writeLog("System Error : $e");
       rethrow;
     }
+  }
+
+  Future signOut() async {
+    await FirebaseAuth.instance.signOut();
   }
 }
