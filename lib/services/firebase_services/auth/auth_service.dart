@@ -36,6 +36,15 @@ class AuthService {
   }
 
   Future signOut() async {
-    await FirebaseAuth.instance.signOut();
+    try {
+      await FirebaseAuth.instance.signOut();
+      return;
+    } on FirebaseAuthException catch (e) {
+      LogUtility.writeLog('Logout Error : $e');
+      rethrow;
+    } catch (e) {
+      LogUtility.writeLog("System Error : $e");
+      rethrow;
+    }
   }
 }
