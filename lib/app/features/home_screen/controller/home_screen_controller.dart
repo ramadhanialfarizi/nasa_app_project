@@ -1,3 +1,8 @@
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart';
+import 'package:nasa_project/app/features/login_screen/login_screen.dart';
 
-class HomeScreenController extends GetxController {}
+class HomeScreenController extends GetxController {
+  logout() {
+    Get.offAll(() => const LoginScreen());
+  }
+}

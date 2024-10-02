@@ -11,7 +11,7 @@ class AuthService {
 
   factory AuthService() => _instance ?? AuthService._internal();
 
-  Future<UserCredential> signInWithGoogle() async {
+  Future<UserCredential?> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
       final GoogleSignInAuthentication? googleAuth =

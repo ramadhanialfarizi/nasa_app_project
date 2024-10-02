@@ -1,3 +1,8 @@
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart';
+import 'package:nasa_project/app/features/home_screen/home_screen.dart';
 
-class LoginScreenController extends GetxController {}
+class LoginScreenController extends GetxController {
+  signInWithGoogle() {
+    Get.offAll(() => const HomeScreen());
+  }
+}
