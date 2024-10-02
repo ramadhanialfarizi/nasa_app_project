@@ -41,6 +41,7 @@ dependencies:
   json_model: ^1.0.0
   google_fonts: ^6.2.1
   equatable: ^2.0.5
+  firebase_core: ^3.6.0
 
 dev_dependencies:
   flutter_test:
