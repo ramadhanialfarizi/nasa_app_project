@@ -339,6 +339,23 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.0"
+  flutter_otp_text_field:
+    dependency: transitive
+    description:
+      name: flutter_otp_text_field
+      sha256: "77e5ca5af01d2adf79757ffab4ad5ca29d5c710b3edf29e590fa5db7551d760e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
+  flutter_package:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: master
+      resolved-ref: cfa71231ce1ef7ad746e6ed74d0cc8ceb4c2aec7
+      url: "https://github.com/internal-dev-package/flutter-package.git"
+    source: git
+    version: "1.0.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -501,6 +518,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.8.0"
+  keyboard_actions:
+    dependency: transitive
+    description:
+      name: keyboard_actions
+      sha256: "31e0ab2a706ac8f58887efa60efc1f19aecdf37d8ab0f665a0f156d1fbeab650"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.0"
   leak_tracker:
     dependency: transitive
     description:
