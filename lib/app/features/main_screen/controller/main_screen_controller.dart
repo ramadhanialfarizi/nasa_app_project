@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:nasa_project/app/features/account_screen/account_screen.dart';
 import 'package:nasa_project/app/features/home_screen/home_screen.dart';
 
 class MainScreenController extends GetxController {
@@ -10,7 +11,7 @@ class MainScreenController extends GetxController {
     Container(),
     Container(),
     Container(),
-    Container(),
+    const AccountScreen(),
   ];
 
   selectWidget(int index) {
