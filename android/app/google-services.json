@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "860435024556-2pk23hgnuf8cins6iac4b187tbol2bp8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hacks.nasaProject",
+            "certificate_hash": "8ad8cb15bcdb6602e6892ad998f4f607870767f0"
+          }
+        },
+        {
           "client_id": "860435024556-eaa288gb2t29iji45gagbesskr6si9eq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -22,7 +30,15 @@
           }
         },
         {
-          "client_id": "860435024556-ugsgnp34vlv92comkev5dk42k0t14oin.apps.googleusercontent.com",
+          "client_id": "860435024556-hvg0v1b9s4ni27m8rvatu36cr5be652q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hacks.nasaProject",
+            "certificate_hash": "d1f1a4ca950cca32e872fb5d485697f2b6885504"
+          }
+        },
+        {
+          "client_id": "860435024556-r1mj4pidmuserkonevn2c4u2tno3gdaq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -35,7 +51,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "860435024556-ugsgnp34vlv92comkev5dk42k0t14oin.apps.googleusercontent.com",
+              "client_id": "860435024556-r1mj4pidmuserkonevn2c4u2tno3gdaq.apps.googleusercontent.com",
               "client_type": 3
             },
             {
