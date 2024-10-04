@@ -26,7 +26,7 @@ class MainScreen extends StatelessWidget {
               label: 'Home',
             ),
             const BottomNavigationBarItem(
-              icon: Icon(Icons.wallet),
+              icon: Icon(Icons.shopping_basket_rounded),
               label: 'Market',
             ),
             BottomNavigationBarItem(
