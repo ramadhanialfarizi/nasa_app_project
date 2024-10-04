@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
+import 'package:nasa_project/app/core/utils/cache_manager.dart';
 import 'package:nasa_project/app/core/utils/log_utility.dart';
 import 'package:nasa_project/app/features/home_screen/home_screen.dart';
+import 'package:nasa_project/app/features/main_screen/main_screen.dart';
 import 'package:nasa_project/app/repository/login_repository.dart/login_repository.dart';
 
-class LoginScreenController extends GetxController {
+class LoginScreenController extends GetxController with CacheManager {
   RxBool isLoadingLogin = false.obs;
 
   signInWithGoogle() async {
@@ -16,7 +18,8 @@ class LoginScreenController extends GetxController {
       if (response.isError ?? false) {
         LogUtility.writeLog(response.errorMessage);
       } else {
-        Get.offAll(() => const HomeScreen());
+        setLoginStatus(true);
+        Get.offAll(() => const MainScreen());
       }
     } catch (e) {
       isLoadingLogin.value = false;

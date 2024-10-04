@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:nasa_project/app/core/utils/cache_manager.dart';
 import 'package:nasa_project/app/features/login_screen/login_screen.dart';
+import 'package:nasa_project/app/features/main_screen/main_screen.dart';
 
 class SplashScreenController extends GetxController with CacheManager {
   @override
@@ -14,7 +15,7 @@ class SplashScreenController extends GetxController with CacheManager {
     await Future.delayed(const Duration(seconds: 1));
 
     if (loginStatus) {
-      // Get.offAll(() => const ());
+      Get.offAll(() => const MainScreen());
     } else {
       Get.offAll(() => const LoginScreen());
     }

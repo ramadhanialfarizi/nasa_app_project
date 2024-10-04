@@ -63,7 +63,9 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(
                     width: ConstantUtils.getFullWidth(context),
                     child: ElevatedButton.icon(
-                      onPressed: () {},
+                      onPressed: () {
+                        _controller.signInWithGoogle();
+                      },
                       icon: Image.asset(
                         ImageUtils.googleIcons,
                         height: 36,
