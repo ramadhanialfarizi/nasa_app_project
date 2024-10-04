@@ -6,4 +6,8 @@ class ImageUtils {
 
   // Icons
   static const String appIcons = "${_icons}app-icon.png";
+  static const String googleIcons = "${_icons}google-icon.png";
+
+  // background
+  static const String authBackground = "${_background}auth-background.png";
 }

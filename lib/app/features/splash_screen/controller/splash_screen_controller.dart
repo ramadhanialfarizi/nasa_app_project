@@ -6,7 +6,7 @@ class SplashScreenController extends GetxController with CacheManager {
   @override
   void onInit() async {
     super.onInit();
-    // splasScreenStart();
+    splasScreenStart();
   }
 
   splasScreenStart() async {
