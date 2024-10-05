@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:nasa_project/app/features/market_screen/market_detail_screen.dart';
 import 'package:nasa_project/app/repository/market_repository/market_repository.dart';
 import 'package:nasa_project/app/repository/market_repository/request/market_request.dart';
 import 'package:nasa_project/app/repository/market_repository/response/market_response.dart';
+import 'package:nasa_project/app/repository/market_repository/response/plant_list_response.dart';
 import 'package:nasa_project/services/api_services/model/parent_response.dart';
 
 class MarketScreenController extends GetxController {
@@ -31,5 +33,11 @@ class MarketScreenController extends GetxController {
     if (response.isError != null) {
       marketResponseData.value = response.data;
     }
+  }
+
+  gotoDetail(PlantListResponse data) {
+    Get.to(() => MarketDetailScreen(
+          plantListResponse: data,
+        ));
   }
 }

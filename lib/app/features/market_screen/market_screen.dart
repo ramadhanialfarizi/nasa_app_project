@@ -7,6 +7,7 @@ import 'package:nasa_project/app/core/global_widget/market_card.dart';
 import 'package:nasa_project/app/core/helpers/helpers.dart';
 import 'package:nasa_project/app/core/utils/color_utils.dart';
 import 'package:nasa_project/app/features/market_screen/controller/market_screen_controller.dart';
+import 'package:nasa_project/app/repository/market_repository/response/plant_list_response.dart';
 
 class MarketScreen extends StatelessWidget {
   const MarketScreen({super.key});
@@ -108,6 +109,10 @@ class MarketScreen extends StatelessWidget {
                             price: data?.price,
                             percentage: data?.increasePrecentage,
                             status: data?.status,
+                            onPressed: () {
+                              _controller
+                                  .gotoDetail(data ?? PlantListResponse());
+                            },
                           );
                         },
                       ),

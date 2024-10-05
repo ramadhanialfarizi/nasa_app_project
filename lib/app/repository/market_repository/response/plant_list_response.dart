@@ -4,6 +4,7 @@ part 'plant_list_response.g.dart';
 
 @JsonSerializable()
 class PlantListResponse {
+  String? id;
   String? image;
   String? name;
   String? price;
@@ -11,6 +12,7 @@ class PlantListResponse {
   String? increasePrecentage;
 
   PlantListResponse({
+    this.id,
     this.image,
     this.name,
     this.price,

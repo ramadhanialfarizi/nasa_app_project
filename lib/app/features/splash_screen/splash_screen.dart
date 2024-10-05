@@ -13,14 +13,15 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var _controller = Get.put(SplashScreenController());
     return BaseWidgetContainer(
+      backgroundColor: ColorUtils.backgroundScreenColors,
       body: Stack(
         alignment: Alignment.center,
         children: [
           Center(
             child: Image.asset(
               ImageUtils.appIcons,
-              width: 160,
-              height: 160,
+              width: 180,
+              height: 180,
             ),
           ),
           Positioned(
