@@ -6,4 +6,7 @@ class ColorUtils {
   static Color secondaryColors = const Color(0xff51CF66);
   static Color greenColors = const Color(0xff41990C);
   static Color redColors = const Color(0xff9E0D0D);
+  static Color blurColors = const Color(0xff000000);
+  static Color decreaseColors = const Color(0xffD90429);
+  static Color increaseColors = const Color(0xff21BF73);
 }

@@ -7,12 +7,14 @@ class PlantListResponse {
   String? image;
   String? name;
   String? price;
+  String? status;
   String? increasePrecentage;
 
   PlantListResponse({
     this.image,
     this.name,
     this.price,
+    this.status,
     this.increasePrecentage,
   });
   factory PlantListResponse.fromJson(Map<String, dynamic> json) =>

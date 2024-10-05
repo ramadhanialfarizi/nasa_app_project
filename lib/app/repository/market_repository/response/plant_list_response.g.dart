@@ -11,6 +11,7 @@ PlantListResponse _$PlantListResponseFromJson(Map<String, dynamic> json) =>
       image: json['image'] as String?,
       name: json['name'] as String?,
       price: json['price'] as String?,
+      status: json['status'] as String?,
       increasePrecentage: json['increasePrecentage'] as String?,
     );
 
@@ -19,5 +20,6 @@ Map<String, dynamic> _$PlantListResponseToJson(PlantListResponse instance) =>
       'image': instance.image,
       'name': instance.name,
       'price': instance.price,
+      'status': instance.status,
       'increasePrecentage': instance.increasePrecentage,
     };
