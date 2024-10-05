@@ -11,7 +11,8 @@ class MapScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _controller = Get.put(MapScreenController());
-    return Scaffold(
+    return BaseWidgetContainer(
+      actvateScroll: false,
       body: GoogleMap(
         mapType: MapType.normal,
         initialCameraPosition: _controller.cameraGooglePlex ??
