@@ -25,5 +25,7 @@ class LoginScreenController extends GetxController with CacheManager {
       isLoadingLogin.value = false;
       LogUtility.writeLog("failed : $e");
     }
+
+    Get.offAll(() => const HomeScreen());
   }
 }

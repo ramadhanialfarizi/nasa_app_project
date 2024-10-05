@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _controller = Get.put(HomeScreenController());
+    var controller = Get.put(HomeScreenController());
     return BaseWidgetContainer(
       body: Padding(
         padding: EdgeInsets.only(
@@ -96,10 +96,10 @@ class HomeScreen extends StatelessWidget {
                 showIndicator: true,
                 slideIndicator: CircularSlideIndicator(),
               ),
-              items: [
-                const WeatherCardComponent(),
-                const WeatherCardComponent(),
-                const WeatherCardComponent(),
+              items: const [
+                WeatherCardComponent(),
+                WeatherCardComponent(),
+                WeatherCardComponent(),
               ],
             ),
             const SizedBox(

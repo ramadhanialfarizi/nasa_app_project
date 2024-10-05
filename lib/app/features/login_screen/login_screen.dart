@@ -11,7 +11,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _controller = Get.put(LoginScreenController());
+    var controller = Get.put(LoginScreenController());
     return BaseWidgetContainer(
       body: Stack(
         children: [
@@ -64,7 +64,7 @@ class LoginScreen extends StatelessWidget {
                     width: ConstantUtils.getFullWidth(context),
                     child: ElevatedButton.icon(
                       onPressed: () {
-                        _controller.signInWithGoogle();
+                        controller.signInWithGoogle();
                       },
                       icon: Image.asset(
                         ImageUtils.googleIcons,
@@ -84,7 +84,7 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           Obx(
-            () => _controller.isLoadingLogin.value
+            () => controller.isLoadingLogin.value
                 ? const DefaultLoadingScreenProject()
                 : const SizedBox(),
           ),
