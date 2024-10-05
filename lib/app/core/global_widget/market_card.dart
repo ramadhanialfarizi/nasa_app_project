@@ -7,8 +7,11 @@ class MarketCard extends StatelessWidget {
   final String? imagePath;
   final String? name;
   final String? price;
+  final String? firstPrice;
+  final String? lastPrice;
   final String? percentage;
   final String? status;
+  final bool? useRangePrice;
   final VoidCallback? onPressed;
   const MarketCard({
     super.key,
@@ -18,6 +21,9 @@ class MarketCard extends StatelessWidget {
     this.percentage,
     this.status,
     this.onPressed,
+    this.useRangePrice = false,
+    this.firstPrice,
+    this.lastPrice,
   });
 
   @override
@@ -65,13 +71,23 @@ class MarketCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(
-                    "Rp ${Helpers().convertNumberToPrice(int.parse(price ?? "0"))}",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w900,
+                  if (useRangePrice ?? false) ...[
+                    Text(
+                      "Rp ${Helpers().convertNumberToPrice(int.parse(firstPrice ?? "0"))}-${Helpers().convertNumberToPrice(int.parse(lastPrice ?? "0"))}",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w900,
+                      ),
                     ),
-                  ),
+                  ] else ...[
+                    Text(
+                      "Rp ${Helpers().convertNumberToPrice(int.parse(price ?? "0"))}",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ],
                   const SizedBox(
                     height: 5,
                   ),

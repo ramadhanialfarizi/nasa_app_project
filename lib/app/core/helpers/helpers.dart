@@ -17,6 +17,12 @@ class Helpers {
     return formattedDate;
   }
 
+  convertToDateTime(String date) {
+    DateTime parsedDate = DateFormat('dd-MM-yyyy').parse(date);
+
+    return parsedDate;
+  }
+
   convertNumberToPrice(int number) {
     String formattedNumber = NumberFormat.decimalPattern('en').format(number);
 

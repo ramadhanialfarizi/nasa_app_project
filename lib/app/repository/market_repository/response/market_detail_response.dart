@@ -5,19 +5,21 @@ part 'market_detail_response.g.dart';
 
 @JsonSerializable()
 class MarketDetailResponse {
-  String? currencyCode;
-  String? buyPrice;
-  String? sellPrice;
-  String? buyPriceBankNote;
-  String? sellPriceBankNote;
+  String? image;
+  String? name;
+  String? lowerPrice;
+  String? higherPrice;
+  String? percentage;
+  String? status;
   List<ChartDataList>? chartDataList;
 
   MarketDetailResponse({
-    this.currencyCode,
-    this.buyPrice,
-    this.sellPrice,
-    this.buyPriceBankNote,
-    this.sellPriceBankNote,
+    this.image,
+    this.name,
+    this.lowerPrice,
+    this.higherPrice,
+    this.percentage,
+    this.status,
     this.chartDataList,
   });
 

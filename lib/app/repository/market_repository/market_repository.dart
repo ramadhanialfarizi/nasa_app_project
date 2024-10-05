@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:nasa_project/app/core/utils/log_utility.dart';
 import 'package:nasa_project/app/repository/market_repository/dummy/market_dummy.dart';
 import 'package:nasa_project/app/repository/market_repository/request/market_detail_request.dart';
@@ -43,6 +45,8 @@ class MarketRepository {
             MarketDetailResponse.fromJson(response.data);
 
         response.data = marketDetailResponse;
+
+        LogUtility.writeLog('data: ${jsonEncode(response)}');
         return response;
       } else {
         return response;
