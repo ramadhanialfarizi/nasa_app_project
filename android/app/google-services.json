@@ -38,6 +38,22 @@
           }
         },
         {
+          "client_id": "860435024556-pnuc1pue47vlga48plqp2prisfu2upfl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hacks.nasaProject",
+            "certificate_hash": "167a2e1ad5eb42892f4c890974af620d9f146ed1"
+          }
+        },
+        {
+          "client_id": "860435024556-r6bmu5ubc3kfdjic2oghlfgpi5hvli26.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hacks.nasaProject",
+            "certificate_hash": "8e74ecc40932d9ad5754a232415ee7a3a7f0fbbd"
+          }
+        },
+        {
           "client_id": "860435024556-r1mj4pidmuserkonevn2c4u2tno3gdaq.apps.googleusercontent.com",
           "client_type": 3
         }

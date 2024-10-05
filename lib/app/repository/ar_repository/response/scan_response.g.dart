@@ -7,16 +7,17 @@ part of 'scan_response.dart';
 // **************************************************************************
 
 ScanResponse _$ScanResponseFromJson(Map<String, dynamic> json) => ScanResponse(
-      actualPrice: json['actualPrice'] as String?,
-      date: json['date'] as String?,
-      plantList: (json['plantList'] as List<dynamic>?)
-          ?.map((e) => PlantListResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      Longitude: json['actualPrice'] as double?,
+      Latitude: json['date'] as double?,
+      PSI: json['PSI'] as double?,
+      TOP_5:
+          (json['TOP_5'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$ScanResponseToJson(ScanResponse instance) =>
     <String, dynamic>{
-      'actualPrice': instance.actualPrice,
-      'date': instance.date,
-      'plantList': instance.plantList,
+      'Longitude': instance.Longitude,
+      'Latitude': instance.Latitude,
+      'PSI': instance.PSI,
+      'TOP_5': instance.TOP_5,
     };

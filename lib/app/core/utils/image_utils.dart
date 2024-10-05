@@ -16,6 +16,8 @@ class ImageUtils {
   static const String pepperBellIcon = "${_icons}pepper-bell-icon.png";
   static const String eggplantIcon = "${_icons}eggplant-icon.png";
   static const String roundedIcon = "${_icons}rounded-icon.png";
+  static const String lightbulbIcon = "${_icons}lightbulb.png";
+  static const String clockIcon = '${_icons}clock.png';
 
   // background
   static const String authBackground = "${_background}auth-background.png";

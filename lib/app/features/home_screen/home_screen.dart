@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:nasa_project/app/core/utils/image_utils.dart';
 import 'package:nasa_project/app/features/home_screen/controller/home_screen_controller.dart';
 import 'package:nasa_project/app/features/home_screen/widget/weather_card_component.dart';
+import 'package:nasa_project/app/features/login_screen/login_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,6 +14,10 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var controller = Get.put(HomeScreenController());
     return BaseWidgetContainer(
+      onPopInvoked: (p0) {
+        Get.off(() => const LoginScreen());
+      },
+      canPop: false,
       body: Padding(
         padding: EdgeInsets.only(
             // left: 20,

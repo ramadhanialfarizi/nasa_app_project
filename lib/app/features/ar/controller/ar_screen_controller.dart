@@ -1,11 +1,14 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:nasa_project/app/core/utils/log_utility.dart';
 import 'package:nasa_project/app/features/ar/annotation.dart';
+import 'package:nasa_project/app/repository/ar_repository/ar_repository.dart';
+import 'package:nasa_project/app/repository/ar_repository/request/scan_request.dart';
+import 'package:nasa_project/app/repository/ar_repository/response/scan_response.dart';
+import 'package:nasa_project/services/api_services/model/parent_response.dart';
 import 'package:uuid/uuid.dart';
 
 class ArScreenController extends GetxController {
@@ -40,28 +43,55 @@ class ArScreenController extends GetxController {
           type: AnnotationType.good)
       .obs;
   RxList<Annotation> annotations = <Annotation>[].obs;
+  RxBool showCard = false.obs;
 
-  // Create a CollectionReference called users that references the firestore collection
   CollectionReference scans = FirebaseFirestore.instance.collection('scans');
 
   Future<void> onScan() async {
     isLoadingScan.value = true;
     timerAnimate.cancel();
     timerAnimate = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
-      if (isLoadingScan.value = true) {
+      if (isLoadingScan.value == true) {
         isDarkLoading.value = !isDarkLoading.value;
       } else {
         timer.cancel();
       }
     });
+    selectedAnnotation.value.position = currentPosition.value;
     try {
-      await scans
-          .add(selectedAnnotation.value)
-          .then((value) => LogUtility.writeLog("Scan requested"))
-          .catchError((error) => LogUtility.writeLog("Failed to scan: $error"));
+      ScanRequest param = ScanRequest();
+      param.latitude = currentPosition.value.latitude;
+      param.longitude = currentPosition.value.longitude;
+      param.timestamp = DateTime.now().toString();
+      LogUtility.writeLog("param scan: ${param.toJson()}");
+      ParentResponse response = await ArRepository().getScan(param);
+      if (response.isError != true) {
+        ScanResponse scanRes = response.data;
+        LogUtility.writeLog({
+          "latitude": param.latitude,
+          "longitude": param.longitude,
+          "timestamp": param.timestamp,
+          "PSI": scanRes.PSI,
+          "TOP_5": scanRes.TOP_5,
+        });
+        await scans.add({
+          "latitude": param.latitude,
+          "longitude": param.longitude,
+          "timestamp": param.timestamp,
+          ...scanRes.toJson()
+        }).then((value) {
+          LogUtility.writeLog("Scan requested");
+          annotations.add(selectedAnnotation.value);
+        }).catchError((error) => LogUtility.writeLog("Failed to scan: $error"));
+      } else {
+        LogUtility.writeLog(response.message);
+      }
     } catch (e) {
-      SnackBar(content: Text(e.toString()));
+      LogUtility.writeLog(e.toString());
     }
+    timerAnimate.cancel();
     isLoadingScan.value = false;
+    showCard.value = true;
+    LogUtility.writeLog('shabi: ${isLoadingScan.value}');
   }
 }
