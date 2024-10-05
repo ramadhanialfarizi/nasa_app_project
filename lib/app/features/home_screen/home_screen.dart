@@ -101,7 +101,25 @@ class HomeScreen extends StatelessWidget {
                 const WeatherCardComponent(),
                 const WeatherCardComponent(),
               ],
-            )
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Other Location',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 15,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+              ],
+            ),
           ],
         ),
       ),
