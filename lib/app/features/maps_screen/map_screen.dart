@@ -22,6 +22,7 @@ class MapScreen extends StatelessWidget {
             ),
         onMapCreated: (GoogleMapController controller) {
           _controller.mapController.complete(controller);
+          _controller.getUserPosition();
         },
       ),
     );

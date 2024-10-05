@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:nasa_project/app/core/utils/log_utility.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class MapScreenController extends GetxController {
   final Completer<GoogleMapController> mapController =
@@ -10,16 +12,27 @@ class MapScreenController extends GetxController {
 
   CameraPosition? cameraGooglePlex;
 
-  // initializeMapController(GoogleMapController controller) {
-  //   LogUtility.writeLog("MAP CONTROLLER INITALIZED");
-  //   _controller = controller;
-  //   getUserPosition();
-  // }
+  getUserPosition() async {
+    final GoogleMapController controller = await mapController.future;
 
-  getUserPosition() {
-    cameraGooglePlex = const CameraPosition(
-      target: LatLng(-6.176766422291668, 106.84238696701179),
-      zoom: 10,
-    );
+    PermissionStatus status = await Permission.location.request();
+
+    if (status.isGranted) {
+      var userPosition = await Geolocator.getCurrentPosition();
+
+      controller.animateCamera(
+        CameraUpdate.newCameraPosition(
+          CameraPosition(
+            target: LatLng(
+              (userPosition.latitude) - 0.0001,
+              userPosition.longitude,
+            ),
+            zoom: 15.0,
+          ),
+        ),
+      );
+    } else if (status.isPermanentlyDenied) {
+      openAppSettings();
+    }
   }
 }
