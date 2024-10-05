@@ -34,7 +34,7 @@ class MarketScreen extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: ColorUtils.secondaryColors,
+                color: ColorUtils.secondaryGreenColors,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
