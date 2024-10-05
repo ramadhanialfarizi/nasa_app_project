@@ -4,20 +4,6 @@ import 'package:ar_location_view/ar_annotation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:uuid/uuid.dart';
 
-enum AnnotationType { pharmacy, hotel, library }
-
-class Annotation extends ArAnnotation {
-  final AnnotationType type;
-
-  Annotation({required super.uid, required super.position, required this.type});
-}
-
-AnnotationType getRandomAnnotation() {
-  final types = AnnotationType.values.toList();
-  final index = Random.secure().nextInt(types.length);
-  return types[index];
-}
-
 List<Annotation> fakeAnnotation({
   required Position position,
   int distance = 1500,
@@ -38,6 +24,12 @@ List<Annotation> fakeAnnotation({
       );
     },
   );
+}
+
+AnnotationType getRandomAnnotation() {
+  final types = AnnotationType.values.toList();
+  final index = Random.secure().nextInt(types.length);
+  return types[index];
 }
 
 Position getRandomLocation(double centerLatitude, double centerLongitude,
@@ -63,3 +55,11 @@ Position getRandomLocation(double centerLatitude, double centerLongitude,
     headingAccuracy: 0,
   );
 }
+
+class Annotation extends ArAnnotation {
+  final AnnotationType type;
+
+  Annotation({required super.uid, required super.position, required this.type});
+}
+
+enum AnnotationType { good, bad }

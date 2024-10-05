@@ -105,7 +105,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            Column(
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -115,7 +115,7 @@ class HomeScreen extends StatelessWidget {
                     fontSize: 15,
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
               ],

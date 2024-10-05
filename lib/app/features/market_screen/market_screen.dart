@@ -1,7 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_package/flutter_package.dart';
-import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:get/get.dart';
 import 'package:nasa_project/app/core/global_widget/market_card.dart';
 import 'package:nasa_project/app/core/helpers/helpers.dart';
@@ -14,7 +12,7 @@ class MarketScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _controller = Get.put(MarketScreenController());
+    var controller = Get.put(MarketScreenController());
     return BaseWidgetContainer(
       body: Padding(
         padding: EdgeInsets.only(
@@ -53,7 +51,7 @@ class MarketScreen extends StatelessWidget {
                   ),
                   Obx(
                     () => Text(
-                      'Rp ${Helpers().convertNumberToPrice(int.parse(_controller.marketResponseData.value.actualPrice ?? "0"))}/kg',
+                      'Rp ${Helpers().convertNumberToPrice(int.parse(controller.marketResponseData.value.actualPrice ?? "0"))}/kg',
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 20,
@@ -66,7 +64,7 @@ class MarketScreen extends StatelessWidget {
                   ),
                   Obx(
                     () => Text(
-                      '${Helpers().formattedDate(_controller.marketResponseData.value.date ?? "08-12-2024")}',
+                      '${Helpers().formattedDate(controller.marketResponseData.value.date ?? "08-12-2024")}',
                       style: TextStyle(
                         fontWeight: FontWeight.w900,
                         fontSize: 10,
@@ -92,16 +90,16 @@ class MarketScreen extends StatelessWidget {
             ),
             Expanded(
               child: Obx(
-                () => (_controller.marketResponseData.value.plantList ?? [])
+                () => (controller.marketResponseData.value.plantList ?? [])
                         .isEmpty
                     ? const SizedBox()
                     : ListView.builder(
                         physics: const ClampingScrollPhysics(),
                         padding: const EdgeInsets.all(0),
-                        itemCount: _controller
+                        itemCount: controller
                             .marketResponseData.value.plantList?.length,
                         itemBuilder: (context, index) {
-                          var data = _controller
+                          var data = controller
                               .marketResponseData.value.plantList?[index];
                           return MarketCard(
                             imagePath: data?.image,
@@ -110,7 +108,7 @@ class MarketScreen extends StatelessWidget {
                             percentage: data?.increasePrecentage,
                             status: data?.status,
                             onPressed: () {
-                              _controller
+                              controller
                                   .gotoDetail(data ?? PlantListResponse());
                             },
                           );
