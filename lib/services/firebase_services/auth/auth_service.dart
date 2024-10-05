@@ -37,6 +37,7 @@ class AuthService {
 
   Future signOut() async {
     try {
+      await Future.delayed(const Duration(milliseconds: 300));
       await FirebaseAuth.instance.signOut();
       return true;
     } on FirebaseAuthException catch (e) {

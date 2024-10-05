@@ -18,6 +18,7 @@ class ImageUtils {
 
   // background
   static const String authBackground = "${_background}auth-background.png";
+  static const String farmerBackground = "${_background}farmer-bg.png";
 
   // Illustration
 }
