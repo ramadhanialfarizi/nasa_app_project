@@ -1,8 +1,5 @@
-import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_package/flutter_package.dart';
-import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:get/get.dart';
 import 'package:nasa_project/app/core/global_widget/market_card.dart';
 import 'package:nasa_project/app/core/helpers/helpers.dart';
