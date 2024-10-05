@@ -11,7 +11,7 @@ class WeatherCardComponent extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       margin: const EdgeInsets.only(right: 20, left: 20),
       decoration: BoxDecoration(
-          color: ColorUtils.primaryColors,
+          color: ColorUtils.secondaryColors,
           borderRadius: BorderRadius.circular(10)),
       child: Column(
         mainAxisSize: MainAxisSize.min,

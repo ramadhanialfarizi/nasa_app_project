@@ -19,6 +19,7 @@ class MainScreen extends StatelessWidget {
           .elementAt(_controller.selectedWidget.value)),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
+          elevation: 10.0,
           type: BottomNavigationBarType.fixed,
           items: [
             const BottomNavigationBarItem(
@@ -36,8 +37,9 @@ class MainScreen extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: ColorUtils.primaryColors,
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.qr_code_scanner_outlined,
+                  color: ColorUtils.whiteColors,
                 ),
               ),
               label: '',
