@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:nasa_project/app/core/utils/cache_manager.dart';
 import 'package:nasa_project/app/core/utils/log_utility.dart';
@@ -6,6 +7,7 @@ import 'package:nasa_project/app/repository/login_repository/login_repository.da
 
 class HomeScreenController extends GetxController with CacheManager {
   RxBool isLoadingLogin = false.obs;
+  CollectionReference scans = FirebaseFirestore.instance.collection('scans');
 
   logout() async {
     try {
