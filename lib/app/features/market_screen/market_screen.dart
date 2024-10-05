@@ -17,9 +17,11 @@ class MarketScreen extends StatelessWidget {
           right: 20,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: const EdgeInsets.all(20),
+              width: ConstantUtils.getFullWidth(context),
+              padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 color: ColorUtils.secondaryColors,
@@ -28,25 +30,46 @@ class MarketScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Actual Price',
+                    'Actual Market Price',
                     style: TextStyle(
-                      fontSize: 17,
+                      fontSize: 15,
                       fontWeight: FontWeight.w400,
                       color: ColorUtils.whiteColors,
                     ),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 5,
                   ),
                   Text(
-                    'Rp 10.000/Kg',
+                    'Rp 10.000/kg',
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 20,
                       color: ColorUtils.whiteColors,
                     ),
-                  )
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    '28 August 2024',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 10,
+                      color: ColorUtils.whiteColors,
+                    ),
+                  ),
                 ],
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              'Vegetable List',
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 15,
               ),
             )
           ],
