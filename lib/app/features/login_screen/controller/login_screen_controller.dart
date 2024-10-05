@@ -3,7 +3,7 @@ import 'package:nasa_project/app/core/utils/cache_manager.dart';
 import 'package:nasa_project/app/core/utils/log_utility.dart';
 import 'package:nasa_project/app/features/home_screen/home_screen.dart';
 import 'package:nasa_project/app/features/main_screen/main_screen.dart';
-import 'package:nasa_project/app/repository/login_repository.dart/login_repository.dart';
+import 'package:nasa_project/app/repository/login_repository/login_repository.dart';
 
 class LoginScreenController extends GetxController with CacheManager {
   RxBool isLoadingLogin = false.obs;

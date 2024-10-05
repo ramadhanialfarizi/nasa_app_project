@@ -12,19 +12,23 @@ class MapScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var _controller = Get.put(MapScreenController());
     return BaseWidgetContainer(
-      actvateScroll: false,
-      body: GoogleMap(
-        mapType: MapType.normal,
-        initialCameraPosition: _controller.cameraGooglePlex ??
-            const CameraPosition(
-              target: LatLng(-6.176766422291668, 106.84238696701179),
-              zoom: 10,
-            ),
-        onMapCreated: (GoogleMapController controller) {
-          _controller.mapController.complete(controller);
-          _controller.getUserPosition();
-        },
-      ),
-    );
+        actvateScroll: false,
+        body: Obx(
+          () => GoogleMap(
+            mapType: MapType.normal,
+            initialCameraPosition: _controller.cameraGooglePlex ??
+                const CameraPosition(
+                  target: LatLng(-6.176766422291668, 106.84238696701179),
+                  zoom: 10,
+                ),
+            onMapCreated: (GoogleMapController controller) {
+              _controller.mapController.complete(controller);
+              _controller.getUserPosition();
+            },
+            markers: Set<Marker>.of(_controller.markerData),
+            myLocationEnabled: true,
+            myLocationButtonEnabled: true,
+          ),
+        ));
   }
 }

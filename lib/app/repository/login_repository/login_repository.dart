@@ -1,5 +1,5 @@
-import 'package:nasa_project/app/repository/login_repository.dart/response/login_response.dart';
-import 'package:nasa_project/app/repository/login_repository.dart/response/logout_response.dart';
+import 'package:nasa_project/app/repository/login_repository/response/login_response.dart';
+import 'package:nasa_project/app/repository/login_repository/response/logout_response.dart';
 import 'package:nasa_project/services/firebase_services/auth/auth_service.dart';
 
 class LoginRepository {
