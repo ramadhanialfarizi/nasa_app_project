@@ -18,7 +18,7 @@ class WeatherCardComponent extends StatelessWidget {
         children: [
           Row(
             children: [
-              Expanded(
+              const Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

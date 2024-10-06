@@ -2,10 +2,42 @@ import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:flutter_package/flutter_package.dart';
 import 'package:get/get.dart';
+import 'package:nasa_project/app/core/utils/color_utils.dart';
 import 'package:nasa_project/app/core/utils/image_utils.dart';
+import 'package:nasa_project/app/features/ar/components/ParametersCard.dart';
 import 'package:nasa_project/app/features/home_screen/controller/home_screen_controller.dart';
 import 'package:nasa_project/app/features/home_screen/widget/weather_card_component.dart';
 import 'package:nasa_project/app/features/login_screen/login_screen.dart';
+
+class ColumnParameter extends StatelessWidget {
+  final String? name;
+  final String? description;
+  final ParametersCardType? type;
+  const ColumnParameter({
+    super.key,
+    this.name = "",
+    this.description = "",
+    this.type = ParametersCardType.good,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(name ?? ""),
+        Text(description ?? "",
+            style: TextStyle(
+              color: type == ParametersCardType.good
+                  ? ColorUtils.greenColors
+                  : type == ParametersCardType.medium
+                      ? ColorUtils.yellowColors
+                      : ColorUtils.redColors,
+            )),
+      ],
+    );
+  }
+}
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -110,20 +142,58 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            const Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Other Location',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 15,
+            Container(
+              color: ColorUtils.historyCardColors,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Other Location',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-              ],
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                      child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          const Text("Bandung, Indonesia"),
+                          Image.asset(
+                            ImageUtils.rainIcon,
+                            width: 55,
+                            height: 30,
+                          ),
+                          const Text("19 C")
+                        ],
+                      ),
+                      const Row(
+                        children: [
+                          ColumnParameter(
+                            name: "Soil",
+                            description: "Hygrosphobic",
+                            type: ParametersCardType.good,
+                          ),
+                          ColumnParameter(
+                            name: "Water",
+                            description: "Low",
+                            type: ParametersCardType.bad,
+                          ),
+                          ColumnParameter(
+                            name: "Fertilizer",
+                            description: "Sub Humid",
+                            type: ParametersCardType.medium,
+                          )
+                        ],
+                      )
+                    ],
+                  ))
+                ],
+              ),
             ),
           ],
         ),

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:ar_location_view/ar_location_view.dart' hide ArView;
 import 'package:flutter/material.dart';
 import 'package:flutter_package/flutter_package.dart' hide LogUtility;
@@ -6,7 +8,6 @@ import 'package:nasa_project/app/core/utils/color_utils.dart';
 import 'package:nasa_project/app/features/ar/ar_view.dart';
 import 'package:nasa_project/app/features/ar/components/ParametersCard.dart';
 import 'package:nasa_project/app/features/ar/controller/ar_screen_controller.dart';
-import 'package:nasa_project/app/features/main_screen/controller/main_screen_controller.dart';
 
 class ArScreen extends StatelessWidget {
   const ArScreen({
@@ -16,14 +17,11 @@ class ArScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ArScreenController());
-    final navbarController = Get.put(MainScreenController());
     controller.scans;
     return BaseWidgetContainer(
       canPop: false,
       onPopInvoked: (p0) {
-        navbarController.selectedWidget.value = 0;
-        Get.delete<ArScreenController>();
-        Get.off(() => MainScreenController());
+        controller.handleBack();
         return true;
       },
       body: InkWell(
@@ -35,8 +33,11 @@ class ArScreen extends StatelessWidget {
             () => ArLocationWidget(
               annotations: controller.annotations.value,
               showDebugInfoSensor: false,
-              showRadar: false,
-              annotationHeight: 198,
+              showRadar: true,
+              radarPosition: RadarPosition.topRight,
+              backgroundRadar: ColorUtils.primaryColors,
+              annotationHeight: 340,
+              annotationWidth: 339,
               annotationViewBuilder: (context, annotation) {
                 return ArView(
                   key: ValueKey(annotation.uid),
@@ -77,8 +78,8 @@ class ArScreen extends StatelessWidget {
             () => controller.showCard.isTrue
                 ? Center(
                     child: SizedBox(
-                        height: 198,
-                        width: 300,
+                        height: 340,
+                        width: 340,
                         child: ParametersCard(
                           annotation: controller.selectedAnnotation.value,
                         )))
@@ -88,7 +89,16 @@ class ArScreen extends StatelessWidget {
                       () => InkWell(
                         onTap: () {
                           if (controller.isLoadingScan.isFalse) {
-                            controller.onScan();
+                            if (controller.currentPosition.value.longitude ==
+                                    0.0 ||
+                                controller.currentPosition.value.latitude ==
+                                    0.0) {
+                              Timer.periodic(Durations.extralong1, (timer) {
+                                controller.onScan();
+                              });
+                            } else {
+                              controller.onScan();
+                            }
                           }
                         },
                         child: AnimatedContainer(
@@ -110,7 +120,33 @@ class ArScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-          )
+          ),
+          InkWell(
+              onTap: () {
+                controller.handleBack();
+              },
+              child: Container(
+                height: 65,
+                width: 65,
+                margin: const EdgeInsets.only(top: 40, left: 20),
+                decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          color:
+                              ColorUtils.chartSecondaryColors.withOpacity(0.6),
+                          blurRadius: 3)
+                    ],
+                    borderRadius: const BorderRadius.all(Radius.circular(65)),
+                    border: Border.all(
+                        width: 2,
+                        color:
+                            ColorUtils.chartSecondaryColors.withOpacity(0.5))),
+                child: Icon(
+                  Icons.arrow_back_ios_new,
+                  color: ColorUtils.whiteColors,
+                  size: 40,
+                ),
+              )),
         ]),
       ),
     );

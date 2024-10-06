@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_package/flutter_package.dart';
-import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:get/get.dart';
 import 'package:nasa_project/app/core/utils/color_utils.dart';
 import 'package:nasa_project/app/core/utils/image_utils.dart';
@@ -11,7 +10,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _controller = Get.put(SplashScreenController());
+    var controller = Get.put(SplashScreenController());
     return BaseWidgetContainer(
       backgroundColor: ColorUtils.backgroundScreenColors,
       body: Stack(

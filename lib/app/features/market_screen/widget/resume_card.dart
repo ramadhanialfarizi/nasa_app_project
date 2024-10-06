@@ -35,7 +35,7 @@ class ResumeCard extends StatelessWidget {
             children: [
               Text(
                 "Rp ${Helpers().convertNumberToPrice(int.parse(price ?? "0"))}",
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),

@@ -1,7 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:json_annotation/json_annotation.dart';
-import 'package:nasa_project/app/repository/market_repository/response/plant_list_response.dart';
 
 part 'scan_response.g.dart';
 

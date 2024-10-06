@@ -23,13 +23,14 @@ class ParametersCard extends StatelessWidget {
         Get.to(() => const ArCardDetail());
       },
       child: Container(
-        height: 198,
+        height: 340,
+        width: 339,
         decoration: const BoxDecoration(
           boxShadow: [
             BoxShadow(offset: Offset(0, 5), blurRadius: 5, color: Colors.grey)
           ],
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(15),
+          borderRadius: BorderRadius.all(
+            Radius.circular(15),
           ),
           color: Colors.white,
         ),
@@ -37,7 +38,7 @@ class ParametersCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,31 +50,87 @@ class ParametersCard extends StatelessWidget {
                         "${(annotation?.position.longitude ?? "")}, ${annotation?.position.latitude ?? ""}",
                         maxLines: 1,
                         style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 15,
+                            decoration: TextDecoration.underline,
+                            decorationColor: Colors.black),
                       ),
                       const Text(
                         "19°C",
                         maxLines: 1,
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
+                            fontWeight: FontWeight.w500, fontSize: 20),
                       ),
                     ],
                   ),
-                  ParameterRow(
-                      name: "Soil",
-                      result: (type.name.capitalizeFirst ?? "").toString(),
-                      type: type),
-                  // const ParameterRow(
-                  //     name: "Water",
-                  //     result: "Good",
-                  //     type: ParametersCardType.good),
-                  // const ParameterRow(
-                  //     name: "Fertilizer",
-                  //     result: "Good",
-                  //     type: ParametersCardType.good),
-                  // Text(
-                  //   '${annotation?.distanceFromUser.toPrecision(2)} m',
-                  // ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ParameterRow(
+                              name: "Soil",
+                              result:
+                                  (type.name.capitalizeFirst ?? "").toString(),
+                              type: type),
+                          ParameterRow(
+                              name: "Soil",
+                              result:
+                                  (type.name.capitalizeFirst ?? "").toString(),
+                              type: type),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ParameterRow(
+                              name: "Soil",
+                              result:
+                                  (type.name.capitalizeFirst ?? "").toString(),
+                              type: type),
+                          ParameterRow(
+                              name: "Soil",
+                              result:
+                                  (type.name.capitalizeFirst ?? "").toString(),
+                              type: type),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ParameterRow(
+                              name: "Soil",
+                              result:
+                                  (type.name.capitalizeFirst ?? "").toString(),
+                              type: type),
+                          ParameterRow(
+                              name: "Soil",
+                              result:
+                                  (type.name.capitalizeFirst ?? "").toString(),
+                              type: type),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ParameterRow(
+                              name: "Soil",
+                              result:
+                                  (type.name.capitalizeFirst ?? "").toString(),
+                              type: type),
+                          ParameterRow(
+                              name: "Soil",
+                              result:
+                                  (type.name.capitalizeFirst ?? "").toString(),
+                              type: type),
+                        ],
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -85,36 +142,75 @@ class ParametersCard extends StatelessWidget {
                   ),
                   color: (type == ParametersCardType.good
                           ? ColorUtils.greenColors
-                          : ColorUtils.redColors)
+                          : type == ParametersCardType.medium
+                              ? ColorUtils.yellowColors
+                              : ColorUtils.redColors)
                       .withOpacity(0.23)),
-              child: Row(
+              child: Column(
                 children: [
-                  SizedBox(
-                    width: 175,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Recommendation",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.only(right: 5),
+                        width: 245,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Recommendation",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            RichText(
+                                text: const TextSpan(
+                              style: TextStyle(color: Colors.black),
+                              children: [
+                                TextSpan(
+                                    text:
+                                        "Recommendation plant to grow in your soil is ",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                    )),
+                                TextSpan(
+                                    text: "Tomato",
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w700))
+                              ],
+                            )),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                          ],
                         ),
-                        Text(
-                          type == ParametersCardType.good
-                              ? "Soil & Weather condition is good for growing your plant"
-                              : "Soil & Weather condition is poor Please wait until June for better time",
-                          style: const TextStyle(
-                            fontSize: 14,
-                          ),
-                        )
-                      ],
-                    ),
+                      ),
+                      Column(
+                        children: [
+                          Transform.rotate(
+                            angle: 0.5,
+                            child: Image.asset(
+                              ImageUtils.tomatoIcon,
+                              height: 52,
+                            ),
+                          )
+                        ],
+                      )
+                    ],
                   ),
-                  Image.asset(type == ParametersCardType.good
-                      ? ImageUtils.lightbulbIcon
-                      : ImageUtils.clockIcon)
+                  const SizedBox(
+                    width: 270,
+                    child: Text(
+                      style:
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
+                      "Tap to see more",
+                      textAlign: TextAlign.end,
+                    ),
+                  )
                 ],
               ),
             ),
@@ -125,4 +221,4 @@ class ParametersCard extends StatelessWidget {
   }
 }
 
-enum ParametersCardType { good, bad }
+enum ParametersCardType { good, bad, medium }

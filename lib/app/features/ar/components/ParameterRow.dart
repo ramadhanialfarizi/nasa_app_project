@@ -20,18 +20,29 @@ class ParameterRow extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            name,
-            maxLines: 1,
-            style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+          SizedBox(
+            width: 87,
+            child: Text(
+              name,
+              maxLines: 1,
+              style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+            ),
           ),
-          Text(
-            result,
-            maxLines: 1,
-            style: TextStyle(
-                color: ColorUtils.greenColors,
-                fontWeight: FontWeight.w500,
-                fontSize: 14),
+          SizedBox(
+            width: 55,
+            child: Text(
+              result,
+              maxLines: 1,
+              textAlign: TextAlign.end,
+              style: TextStyle(
+                  color: type == ParametersCardType.good
+                      ? ColorUtils.greenColors
+                      : type == ParametersCardType.medium
+                          ? ColorUtils.yellowColors
+                          : ColorUtils.redColors,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14),
+            ),
           ),
         ],
       ),

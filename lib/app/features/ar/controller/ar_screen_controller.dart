@@ -5,6 +5,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:nasa_project/app/core/utils/log_utility.dart';
 import 'package:nasa_project/app/features/ar/annotation.dart';
+import 'package:nasa_project/app/features/main_screen/controller/main_screen_controller.dart';
 import 'package:nasa_project/app/repository/ar_repository/ar_repository.dart';
 import 'package:nasa_project/app/repository/ar_repository/request/scan_request.dart';
 import 'package:nasa_project/app/repository/ar_repository/response/scan_response.dart';
@@ -42,10 +43,57 @@ class ArScreenController extends GetxController {
               speedAccuracy: 0),
           type: AnnotationType.good)
       .obs;
-  RxList<Annotation> annotations = <Annotation>[].obs;
   RxBool showCard = false.obs;
+  RxList<Annotation> annotations = <Annotation>[].obs;
 
   CollectionReference scans = FirebaseFirestore.instance.collection('scans');
+
+  final navbarController = Get.put(MainScreenController());
+
+  handleBack() {
+    if (showCard.isTrue) {
+      showCard.value = false;
+    } else {
+      navbarController.selectedWidget.value = 0;
+      Get.delete<ArScreenController>();
+      Get.off(() => MainScreenController());
+    }
+  }
+
+  @override
+  void onInit() {
+    scans.get().then((snapshot) {
+      List<Annotation> newAnnotations = [];
+      if (snapshot.docs.isNotEmpty) {
+        for (var doc in snapshot.docs) {
+          try {
+            Position position = Position(
+                longitude: doc['longitude'] ?? 0,
+                latitude: doc['latitude'] ?? 0,
+                timestamp:
+                    DateTime.tryParse(doc['timestamp']) ?? DateTime.now(),
+                accuracy: doc['accuracy'] ?? 0,
+                altitude: doc['altitude'] ?? 0,
+                altitudeAccuracy: doc['altitudeAccuracy'] ?? 0,
+                heading: doc['heading'] ?? 0,
+                headingAccuracy: doc['headingAccuracy'] ?? 0,
+                speed: doc['speed'] ?? 0,
+                speedAccuracy: doc['speedAccuracy'] ?? 0);
+            Annotation annotation = Annotation(
+                uid: doc.id, position: position, type: AnnotationType.good);
+            newAnnotations.add(annotation);
+          } catch (e) {
+            LogUtility.writeLog('error stream: ${e.toString()}');
+          }
+        }
+      }
+      if (newAnnotations.isNotEmpty) {
+        annotations.clear();
+        annotations.value = newAnnotations;
+      }
+    });
+    super.onInit();
+  }
 
   Future<void> onScan() async {
     isLoadingScan.value = true;
@@ -57,7 +105,6 @@ class ArScreenController extends GetxController {
         timer.cancel();
       }
     });
-    selectedAnnotation.value.position = currentPosition.value;
     try {
       ScanRequest param = ScanRequest();
       param.latitude = currentPosition.value.latitude;
@@ -71,6 +118,13 @@ class ArScreenController extends GetxController {
           "latitude": param.latitude,
           "longitude": param.longitude,
           "timestamp": param.timestamp,
+          "accuracy": currentPosition.value.accuracy,
+          "altitude": currentPosition.value.altitude,
+          "altitudeAccuracy": currentPosition.value.altitudeAccuracy,
+          "heading": currentPosition.value.heading,
+          "headingAccuracy": currentPosition.value.headingAccuracy,
+          "speed": currentPosition.value.speed,
+          "speedAccuracy": currentPosition.value.speedAccuracy,
           "PSI": scanRes.PSI,
           "TOP_5": scanRes.TOP_5,
         });
@@ -78,7 +132,15 @@ class ArScreenController extends GetxController {
           "latitude": param.latitude,
           "longitude": param.longitude,
           "timestamp": param.timestamp,
-          ...scanRes.toJson()
+          "PSI": scanRes.PSI,
+          "TOP_5": scanRes.TOP_5,
+          "accuracy": currentPosition.value.accuracy,
+          "altitude": currentPosition.value.altitude,
+          "altitudeAccuracy": currentPosition.value.altitudeAccuracy,
+          "heading": currentPosition.value.heading,
+          "headingAccuracy": currentPosition.value.headingAccuracy,
+          "speed": currentPosition.value.speed,
+          "speedAccuracy": currentPosition.value.speedAccuracy,
         }).then((value) {
           LogUtility.writeLog("Scan requested");
           annotations.add(selectedAnnotation.value);

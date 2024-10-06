@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:nasa_project/app/core/helpers/helpers.dart';
 import 'package:nasa_project/app/core/utils/color_utils.dart';
@@ -74,7 +73,7 @@ class MarketCard extends StatelessWidget {
                   if (useRangePrice ?? false) ...[
                     Text(
                       "Rp ${Helpers().convertNumberToPrice(int.parse(firstPrice ?? "0"))}-${Helpers().convertNumberToPrice(int.parse(lastPrice ?? "0"))}",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w900,
                       ),
@@ -82,7 +81,7 @@ class MarketCard extends StatelessWidget {
                   ] else ...[
                     Text(
                       "Rp ${Helpers().convertNumberToPrice(int.parse(price ?? "0"))}",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w900,
                       ),

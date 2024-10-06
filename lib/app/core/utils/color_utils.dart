@@ -16,4 +16,6 @@ class ColorUtils {
   static Color increaseColors = const Color(0xff21BF73);
   static Color chartColors = const Color(0xff0066FF);
   static Color chartSecondaryColors = const Color(0xff585C62);
+  static Color yellowColors = const Color(0xffF9C900);
+  static Color historyCardColors = const Color(0xffF3D8C1);
 }

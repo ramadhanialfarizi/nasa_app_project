@@ -11,7 +11,7 @@ class AccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _controller = Get.put(AccountScreenController());
+    var controller = Get.put(AccountScreenController());
     return Scaffold(
         body: Stack(
       alignment: Alignment.topCenter,
@@ -43,7 +43,7 @@ class AccountScreen extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 'Darlene Robertson',
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
@@ -54,7 +54,7 @@ class AccountScreen extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'About this farmer',
                     style: TextStyle(
                       fontSize: 15,
@@ -64,10 +64,10 @@ class AccountScreen extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Container(
+                  SizedBox(
                     // color: Colors.amber,
                     height: ConstantUtils.getFullHeight(context) * 0.15,
-                    child: Text(
+                    child: const Text(
                       'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
                       overflow: TextOverflow.ellipsis,
                       maxLines: 5,
@@ -92,7 +92,7 @@ class AccountScreen extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                _controller.logout();
+                controller.logout();
               },
               icon: Icon(
                 Icons.exit_to_app,
@@ -106,7 +106,7 @@ class AccountScreen extends StatelessWidget {
           ),
         ),
         Obx(
-          () => _controller.isLoadingLogout.value
+          () => controller.isLoadingLogout.value
               ? const DefaultLoadingScreenProject()
               : const SizedBox(),
         )

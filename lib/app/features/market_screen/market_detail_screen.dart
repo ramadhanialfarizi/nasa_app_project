@@ -18,7 +18,7 @@ class MarketDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _controller = Get.put(MarketDetailScreenController(
+    var controller = Get.put(MarketDetailScreenController(
       plantListResponse: plantListResponse,
     ));
     return BaseWidgetContainer(
@@ -34,9 +34,9 @@ class MarketDetailScreen extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    _controller.onBackTap();
+                    controller.onBackTap();
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.arrow_back_ios,
                   ),
                 ),
@@ -53,7 +53,7 @@ class MarketDetailScreen extends StatelessWidget {
                 ),
                 Text(
                   plantListResponse.name ?? "",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.w900,
                     fontSize: 16,
                   ),
@@ -96,7 +96,7 @@ class MarketDetailScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Chart Data',
                         style: TextStyle(
                           fontWeight: FontWeight.w900,
@@ -112,7 +112,7 @@ class MarketDetailScreen extends StatelessWidget {
                           primaryXAxis: const DateTimeAxis(),
                           series: <CartesianSeries>[
                             LineSeries<Map, DateTime>(
-                                dataSource: _controller.marketResponseData.value
+                                dataSource: controller.marketResponseData.value
                                     .chartDataList![0].chartData!
                                     .map((element) => {
                                           'value':
@@ -137,13 +137,13 @@ class MarketDetailScreen extends StatelessWidget {
                 ),
                 Obx(
                   () => MarketCard(
-                    name: _controller.marketResponseData.value.name,
-                    imagePath: _controller.marketResponseData.value.image,
-                    percentage: _controller.marketResponseData.value.percentage,
+                    name: controller.marketResponseData.value.name,
+                    imagePath: controller.marketResponseData.value.image,
+                    percentage: controller.marketResponseData.value.percentage,
                     useRangePrice: true,
-                    firstPrice: _controller.marketResponseData.value.lowerPrice,
-                    lastPrice: _controller.marketResponseData.value.higherPrice,
-                    status: _controller.marketResponseData.value.status,
+                    firstPrice: controller.marketResponseData.value.lowerPrice,
+                    lastPrice: controller.marketResponseData.value.higherPrice,
+                    status: controller.marketResponseData.value.status,
                   ),
                 ),
                 const SizedBox(
@@ -151,9 +151,9 @@ class MarketDetailScreen extends StatelessWidget {
                 ),
                 Obx(
                   () => ResumeCard(
-                    percentage: _controller.marketResponseData.value.percentage,
-                    price: _controller.marketResponseData.value.higherPrice,
-                    status: _controller.marketResponseData.value.status,
+                    percentage: controller.marketResponseData.value.percentage,
+                    price: controller.marketResponseData.value.higherPrice,
+                    status: controller.marketResponseData.value.status,
                   ),
                 ),
               ],
