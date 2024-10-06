@@ -25,26 +25,15 @@ class BaseServices {
   }
 
   initBaseServices() async {
-    // bool loginStatus = await getLoginStatus();
-    // LoginDM loginData = await getLoginData();
-    // token = "Bearer ${loginData.token}";
+    headers = {
+      'Content-Type': 'application/json',
+      'User-Agent': "PostmanRuntime/7.41.2",
+      'Accept': "*/*",
+      'Accept-Encoding': "gzip, deflate, br",
+      'Connection': "keep-alive",
+    };
 
-    // LogUtility.writeLog("token : $token");
-
-    // headers = loginStatus
-    //     ? {
-    //         'Content-Type': 'application/json',
-    //         'Authorization': token,
-    //       }
-    //     : {
-    //         'Content-Type': 'application/json',
-    //         'User-Agent': "PostmanRuntime/7.41.2",
-    //         'Accept': "*/*",
-    //         'Accept-Encoding': "gzip, deflate, br",
-    //         'Connection': "keep-alive",
-    //       };
-
-    // LogUtility.writeLog("Header : ${jsonEncode(headers)}");
+    LogUtility.writeLog("Header : ${jsonEncode(headers)}");
 
     _dio.interceptors.add(
       InterceptorsWrapper(
