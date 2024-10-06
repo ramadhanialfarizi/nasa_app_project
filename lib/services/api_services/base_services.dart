@@ -13,17 +13,6 @@ class BaseServices {
   String token = "";
   Map<String, String>? headers;
 
-  initEndpoint() async {
-    try {
-      await _remoteConfig.fetchAndActivate();
-
-      path = _remoteConfig.getString('urlAPI');
-      LogUtility.writeLog("path : $path");
-    } catch (e) {
-      LogUtility.writeLog('Failed to fetch remote config: $e');
-    }
-  }
-
   initBaseServices() async {
     headers = {
       'Content-Type': 'application/json',
@@ -70,6 +59,17 @@ class BaseServices {
         },
       ),
     );
+  }
+
+  initEndpoint() async {
+    // try {
+    //   await _remoteConfig.fetchAndActivate();
+
+    //   path = _remoteConfig.getString('urlAPI');
+    //   LogUtility.writeLog("path : $path");
+    // } catch (e) {
+    //   LogUtility.writeLog('Failed to fetch remote config: $e');
+    // }
   }
 
   Future<Response> postApi<T>(

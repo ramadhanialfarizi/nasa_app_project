@@ -7,9 +7,9 @@ part of 'scan_response.dart';
 // **************************************************************************
 
 ScanResponse _$ScanResponseFromJson(Map<String, dynamic> json) => ScanResponse(
-      Longitude: json['actualPrice'] as double?,
-      Latitude: json['date'] as double?,
-      PSI: json['PSI'] as double?,
+      Longitude: (json['Longitude'] as num?)?.toDouble(),
+      Latitude: (json['Latitude'] as num?)?.toDouble(),
+      PSI: (json['PSI'] as num?)?.toDouble(),
       TOP_5:
           (json['TOP_5'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );

@@ -5,15 +5,18 @@ import 'package:nasa_project/app/core/utils/color_utils.dart';
 import 'package:nasa_project/app/core/utils/image_utils.dart';
 import 'package:nasa_project/app/features/ar/ar_card_detail.dart';
 import 'package:nasa_project/app/features/ar/components/ParameterRow.dart';
+import 'package:nasa_project/app/repository/data_model/soil_dm.dart';
 
 class ParametersCard extends StatelessWidget {
   final ParametersCardType type;
   final ArAnnotation? annotation;
+  final SoilDM? soilDM;
 
   const ParametersCard({
     this.type = ParametersCardType.good,
     super.key,
     this.annotation,
+    this.soilDM,
   });
 
   @override

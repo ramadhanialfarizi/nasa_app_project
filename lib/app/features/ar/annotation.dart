@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:ar_location_view/ar_annotation.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:nasa_project/app/repository/data_model/soil_dm.dart';
 import 'package:uuid/uuid.dart';
 
 List<Annotation> fakeAnnotation({
@@ -20,7 +21,7 @@ List<Annotation> fakeAnnotation({
           distance / 100000,
           distance / 100000,
         ),
-        type: getRandomAnnotation(),
+        // type: getRandomAnnotation(),
       );
     },
   );
@@ -57,9 +58,9 @@ Position getRandomLocation(double centerLatitude, double centerLongitude,
 }
 
 class Annotation extends ArAnnotation {
-  final AnnotationType type;
+  SoilDM? soilDM;
 
-  Annotation({required super.uid, required super.position, required this.type});
+  Annotation({required super.uid, required super.position, this.soilDM});
 }
 
 enum AnnotationType { good, bad }

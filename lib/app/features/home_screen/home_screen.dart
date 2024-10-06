@@ -8,6 +8,7 @@ import 'package:nasa_project/app/features/ar/components/ParametersCard.dart';
 import 'package:nasa_project/app/features/home_screen/controller/home_screen_controller.dart';
 import 'package:nasa_project/app/features/home_screen/widget/weather_card_component.dart';
 import 'package:nasa_project/app/features/login_screen/login_screen.dart';
+import 'package:nasa_project/app/repository/data_model/soil_dm.dart';
 
 class ColumnParameter extends StatelessWidget {
   final String? name;
@@ -133,17 +134,23 @@ class HomeScreen extends StatelessWidget {
                 showIndicator: true,
                 slideIndicator: CircularSlideIndicator(),
               ),
-              items: const [
-                WeatherCardComponent(),
-                WeatherCardComponent(),
-                WeatherCardComponent(),
+              items: [
+                WeatherCardComponent(soilDM: SoilDM()),
+                WeatherCardComponent(soilDM: SoilDM()),
+                WeatherCardComponent(soilDM: SoilDM()),
               ],
             ),
             const SizedBox(
               height: 30,
             ),
             Container(
-              color: ColorUtils.historyCardColors,
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+              margin: const EdgeInsets.symmetric(horizontal: 15),
+              decoration: BoxDecoration(
+                  color: ColorUtils.historyCardColors,
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(15),
+                  )),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -158,40 +165,56 @@ class HomeScreen extends StatelessWidget {
                     height: 10,
                   ),
                   Container(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      decoration: BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(
+                                  width: 1, color: ColorUtils.whiteColors))),
                       child: Column(
-                    children: [
-                      Row(
                         children: [
-                          const Text("Bandung, Indonesia"),
-                          Image.asset(
-                            ImageUtils.rainIcon,
-                            width: 55,
-                            height: 30,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text("Bandung, Indonesia"),
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    ImageUtils.rainIcon,
+                                    width: 55,
+                                    height: 30,
+                                  ),
+                                  const Text(
+                                    "19 C",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500),
+                                  )
+                                ],
+                              )
+                            ],
                           ),
-                          const Text("19 C")
-                        ],
-                      ),
-                      const Row(
-                        children: [
-                          ColumnParameter(
-                            name: "Soil",
-                            description: "Hygrosphobic",
-                            type: ParametersCardType.good,
-                          ),
-                          ColumnParameter(
-                            name: "Water",
-                            description: "Low",
-                            type: ParametersCardType.bad,
-                          ),
-                          ColumnParameter(
-                            name: "Fertilizer",
-                            description: "Sub Humid",
-                            type: ParametersCardType.medium,
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              ColumnParameter(
+                                name: "Soil",
+                                description: "Hygrosphobic",
+                                type: ParametersCardType.good,
+                              ),
+                              ColumnParameter(
+                                name: "Water",
+                                description: "Low",
+                                type: ParametersCardType.bad,
+                              ),
+                              ColumnParameter(
+                                name: "Fertilizer",
+                                description: "Sub Humid",
+                                type: ParametersCardType.medium,
+                              )
+                            ],
                           )
                         ],
-                      )
-                    ],
-                  ))
+                      ))
                 ],
               ),
             ),

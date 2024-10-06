@@ -7,8 +7,8 @@ part of 'scan_request.dart';
 // **************************************************************************
 
 ScanRequest _$ScanRequestFromJson(Map<String, dynamic> json) => ScanRequest(
-      longitude: json['longitude'] as double?,
-      latitude: json['latitude'] as double?,
+      longitude: (json['longitude'] as num?)?.toDouble(),
+      latitude: (json['latitude'] as num?)?.toDouble(),
       timestamp: json['timestamp'] as String?,
     );
 

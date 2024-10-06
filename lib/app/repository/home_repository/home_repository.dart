@@ -1,20 +1,19 @@
-import 'package:nasa_project/app/repository/ar_repository/request/scan_request.dart';
 import 'package:nasa_project/app/repository/data_model/soil_dm.dart';
 import 'package:nasa_project/app/repository/home_repository/response/soil_response.dart';
 import 'package:nasa_project/services/api_services/base_services.dart';
 import 'package:nasa_project/services/api_services/endpoints.dart';
 import 'package:nasa_project/services/api_services/model/parent_response.dart';
 
-class ArRepository extends BaseServices {
-  static ArRepository? _instance;
+class HomeRepository extends BaseServices {
+  static HomeRepository? _instance;
 
-  factory ArRepository() => _instance ?? ArRepository._internal();
+  factory HomeRepository() => _instance ?? HomeRepository._internal();
 
-  ArRepository._internal() {
+  HomeRepository._internal() {
     _instance = this;
   }
 
-  Future<ParentResponse> getScan(ScanRequest param) async {
+  Future<ParentResponse> getListSoilInfos() async {
     ParentResponse? response = await postApi(
       params: {"": ""},
       endpoint: Endpoints.getActiveJob,
@@ -51,22 +50,4 @@ class ArRepository extends BaseServices {
       return response;
     }
   }
-
-  // Future<ParentResponse> getScan(ScanRequest param) async {
-  //   try {
-  //     ParentResponse response = ParentResponse.fromJson(ArDummy().scanResponse);
-
-  //     if (response.data != null) {
-  //       ScanResponse data = ScanResponse.fromJson(response.data);
-
-  //       response.data = data;
-  //       return response;
-  //     } else {
-  //       return response;
-  //     }
-  //   } catch (e) {
-  //     LogUtility.writeLog("error scan repo: $e");
-  //     return ParentResponse();
-  //   }
-  // }
 }

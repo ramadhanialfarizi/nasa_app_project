@@ -94,6 +94,7 @@ class ArScreen extends StatelessWidget {
                                 controller.currentPosition.value.latitude ==
                                     0.0) {
                               Timer.periodic(Durations.extralong1, (timer) {
+                                timer.cancel();
                                 controller.onScan();
                               });
                             } else {
