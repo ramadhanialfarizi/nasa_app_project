@@ -55,8 +55,9 @@ class ArScreenController extends GetxController {
       showCard.value = false;
     } else {
       navbarController.selectedWidget.value = 0;
-      Get.delete<ArScreenController>();
-      Get.off(() => MainScreenController());
+      // Get.delete<ArScreenController>();
+      // Get.off(() => MainScreenController());
+      Get.back();
     }
   }
 
@@ -109,6 +110,7 @@ class ArScreenController extends GetxController {
       }
     });
     try {
+      await Future.delayed(const Duration(milliseconds: 500));
       ScanRequest param = ScanRequest();
       param.latitude = currentPosition.value.latitude;
       param.longitude = currentPosition.value.longitude;

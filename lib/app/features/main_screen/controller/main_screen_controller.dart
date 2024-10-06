@@ -20,6 +20,8 @@ class MainScreenController extends GetxController {
   selectWidget(int index) {
     if (index == 3) {
       Get.to(() => const MapScreen());
+    } else if (index == 2) {
+      Get.to(() => const ArScreen());
     } else {
       selectedWidget.value = index;
     }

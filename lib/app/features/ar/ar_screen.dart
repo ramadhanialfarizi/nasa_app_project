@@ -127,8 +127,8 @@ class ArScreen extends StatelessWidget {
                 controller.handleBack();
               },
               child: Container(
-                height: 65,
-                width: 65,
+                height: 40,
+                width: 40,
                 margin: const EdgeInsets.only(top: 40, left: 20),
                 decoration: BoxDecoration(
                     boxShadow: [
@@ -145,7 +145,7 @@ class ArScreen extends StatelessWidget {
                 child: Icon(
                   Icons.arrow_back_ios_new,
                   color: ColorUtils.whiteColors,
-                  size: 40,
+                  size: 20,
                 ),
               )),
         ]),
